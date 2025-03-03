@@ -16,6 +16,7 @@ public class ConjuredItem extends Item implements ItemInterface {
                 this.quality = this.quality - 2;
             }
         }
+
         this.sellIn -= 1;
     }
 }

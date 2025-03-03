@@ -16,6 +16,7 @@ public class NormalItem extends Item implements ItemInterface {
                 this.quality = this.quality - 1;
             }
         }
+
         this.sellIn -= 1;
     }
 }

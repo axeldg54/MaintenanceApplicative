@@ -10,6 +10,7 @@ public class AgedBrieItem extends Item implements ItemInterface {
         if (this.quality < 50) {
             this.quality = this.quality + 1;
         }
+
         this.sellIn -= 1;
     }
 }
