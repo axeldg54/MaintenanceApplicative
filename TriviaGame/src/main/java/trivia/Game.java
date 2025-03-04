@@ -17,8 +17,8 @@ public class Game implements IGame {
     public Game() {
         for (int i = 0; i < 50; i++) {
             popQuestions.addLast("Pop Question " + i);
-            scienceQuestions.addLast(("Science Question " + i));
-            sportsQuestions.addLast(("Sports Question " + i));
+            scienceQuestions.addLast("Science Question " + i);
+            sportsQuestions.addLast("Sports Question " + i);
             rockQuestions.addLast("Rock Question " + i);
         }
     }
@@ -33,6 +33,7 @@ public class Game implements IGame {
         if (playerAdded) {
             System.out.println(playerName + " was added");
             System.out.println("They are player number " + players.size());
+            currentPlayer = players.get(0);
             return true;
         } else {
             System.out.println("Player was not added");
@@ -101,15 +102,16 @@ public class Game implements IGame {
     }
 
     public boolean handleCorrectAnswer() {
-            System.out.println("Correct Answer !");
-            currentPlayer.addPurse();
-            System.out.println(currentPlayer.getName()
-                    + " now has "
-                    + currentPlayer.getPurses()
-                    + " Gold Coins.");
+        System.out.println("Correct Answer !");
+        currentPlayer.addPurse();
+        System.out.println(currentPlayer.getName()
+                + " now has "
+                + currentPlayer.getPurses()
+                + " Gold Coins.");
 
-            selectNextPlayer();
-            return didPlayerWin();
+        boolean win = didPlayerWin();
+        selectNextPlayer();
+        return win;
     }
 
     public boolean wrongAnswer() {
@@ -123,6 +125,10 @@ public class Game implements IGame {
 
     private boolean didPlayerWin() {
         return currentPlayer.getPurses() >= 6;
+    }
+
+    public void setRandomCurrentPlayer() {
+        currentPlayer = players.get((int) (Math.random() * players.size()));
     }
 
     public void selectNextPlayer() {
