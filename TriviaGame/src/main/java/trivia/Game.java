@@ -64,7 +64,7 @@ public class Game implements IGame {
         System.out.println("They have rolled a " + roll);
 
         if (currentPlayer.isInPenaltyBox()) {
-            if (roll % 2 != 0) {
+            if (canEscapeFromJail(roll)) {
                 currentPlayer.setInPenaltyBox(false);
                 System.out.println(currentPlayer + " is getting out of the penalty box");
                 forwardPlayer(roll);
