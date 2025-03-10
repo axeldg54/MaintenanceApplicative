@@ -1,25 +1,43 @@
 package trivia;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 // REFACTOR ME
 public class Game implements IGame {
-    ArrayList<Player> players = new ArrayList<>();
-
-    LinkedList<String> popQuestions = new LinkedList<>();
-    LinkedList<String> scienceQuestions = new LinkedList<>();
-    LinkedList<String> sportsQuestions = new LinkedList<>();
-    LinkedList<String> rockQuestions = new LinkedList<>();
+    
+//    enum Categories {
+//
+//        POP("Pop"),
+//        SCIENCE("Science"),
+//        SPORTS("Sports"),
+//        ROCK("Rock");
+//
+//        private final String nomCategorie;
+//
+//        Categories(final String string) {
+//            nomCategorie = string;
+//        }
+//
+//        public String toString() {
+//            return nomCategorie;
+//        }
+//    }
+    
+    private final String POP = "Pop";
+    private final String ROCK = "Rock";
+    private final String SCIENCE = "Science";
+    private final String SPORT = "Sport";
+    
+    private ArrayList<Player> players = new ArrayList<>();
+    private ArrayList<Categorie> categories = new ArrayList<>();
+    
 
     Player currentPlayer;
 
     public Game() {
-        for (int i = 0; i < 50; i++) {
-            popQuestions.addLast("Pop Question " + i);
-            scienceQuestions.addLast("Science Question " + i);
-            sportsQuestions.addLast("Sports Question " + i);
-            rockQuestions.addLast("Rock Question " + i);
+        String[] nomCategories = new String[] {POP, ROCK, SCIENCE, SPORT};
+        for (String category : nomCategories) {
+            this.categories.add(new Categorie(category, "./FichiersQuestion/" + category + ".txt"));
         }
     }
 
