@@ -1,5 +1,7 @@
 package trivia;
 
+import trivia.Categories.Categorie;
+
 import java.util.ArrayList;
 
 // REFACTOR ME
@@ -37,7 +39,7 @@ public class Game implements IGame {
 
     public Game() {
         for (String category : nomCategories) {
-            this.categories.add(new Categorie(category, "./src/main/java/trivia/FichiersQuestions/" + category + ".txt"));
+            this.categories.add(new Categorie(category, "./src/main/java/trivia/FichiersQuestions/" + category + ".txt", new ArrayList<>()));
         }
     }
 
