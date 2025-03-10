@@ -1,21 +1,18 @@
-package trivia.Categories;
+package trivia;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
-public class Categorie {
+public class Category {
 	
-	private final String nomCategorie;
+	private final String name;
 	private final ArrayList<String> questions;
-	public ArrayList<Integer> positions;
 
-	public Categorie(String nomCaregorie, String fichierQuestions, ArrayList<Integer> positions) {
-		this.nomCategorie = nomCaregorie;
+	public Category(String nomCaregorie, String fichierQuestions) {
+		this.name = nomCaregorie;
 		this.questions = new ArrayList<>();
-		this.positions = positions;
 		fetchQuestions(fichierQuestions);
 	}
 	
@@ -23,8 +20,8 @@ public class Categorie {
 		return questions;
 	}
 	
-	public String getNomCategorie() {
-		return nomCategorie;
+	public String getName() {
+		return name;
 	}
 	
 	private void fetchQuestions(String cheminFichier){
@@ -49,9 +46,4 @@ public class Categorie {
 		}
 		return null;
 	}
-
-	public List<Integer> getPositions() {
-		return positions;
-	}
-
 }
