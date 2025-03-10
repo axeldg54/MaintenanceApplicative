@@ -64,11 +64,10 @@ public class Game implements IGame {
         System.out.println("They have rolled a " + roll);
 
         if (currentPlayer.isInPenaltyBox()) {
-            if (canEscapeFromJail(roll)) {
+            if (roll % 2 != 0) {
                 currentPlayer.setInPenaltyBox(false);
                 System.out.println(currentPlayer + " is getting out of the penalty box");
-                currentPlayer.setPosition((currentPlayer.getPosition() + roll) % 12);
-
+                forwardPlayer(roll);
                 System.out.println(currentPlayer
                         + "'s new location is "
                         + currentPlayer.getPosition());
@@ -76,11 +75,9 @@ public class Game implements IGame {
                 askQuestion();
             } else {
                 System.out.println(currentPlayer + " is not getting out of the penalty box");
-                currentPlayer.setInPenaltyBox(true);
             }
         } else {
-            currentPlayer.setPosition((currentPlayer.getPosition() + roll) % 12);
-
+            forwardPlayer(roll);
             System.out.println(currentPlayer
                     + "'s new location is "
                     + currentPlayer.getPosition());
@@ -107,36 +104,36 @@ public class Game implements IGame {
 
 
     private String currentCategory() {
-        if (currentPlayer.getPosition() == 0) return "Pop";
-        if (currentPlayer.getPosition() == 4) return "Pop";
-        if (currentPlayer.getPosition() == 8) return "Pop";
-        if (currentPlayer.getPosition() == 1) return "Science";
-        if (currentPlayer.getPosition() == 5) return "Science";
-        if (currentPlayer.getPosition() == 9) return "Science";
-        if (currentPlayer.getPosition() == 2) return "Sports";
-        if (currentPlayer.getPosition() == 6) return "Sports";
-        if (currentPlayer.getPosition() == 10) return "Sports";
+        if (currentPlayer.getPosition() == 1) return "Pop";
+        if (currentPlayer.getPosition() == 5) return "Pop";
+        if (currentPlayer.getPosition() == 9) return "Pop";
+        if (currentPlayer.getPosition() == 2) return "Science";
+        if (currentPlayer.getPosition() == 6) return "Science";
+        if (currentPlayer.getPosition() == 10) return "Science";
+        if (currentPlayer.getPosition() == 3) return "Sports";
+        if (currentPlayer.getPosition() == 7) return "Sports";
+        if (currentPlayer.getPosition() == 11) return "Sports";
         return "Rock";
     }
 
     public boolean handleCorrectAnswer() {
-        System.out.println("Correct Answer !");
-        currentPlayer.addPurse();
-        System.out.println(currentPlayer.getName()
-                + " now has "
-                + currentPlayer.getPurses()
-                + " Gold Coins.");
-
+        if (!currentPlayer.isInPenaltyBox()) {
+            System.out.println("Answer was correct!!!!");
+            currentPlayer.addPurse();
+            System.out.println(currentPlayer.getName()
+                    + " now has "
+                    + currentPlayer.getPurses()
+                    + " Gold Coins.");
+        }
         boolean win = didPlayerWin();
-        System.out.println(win);
         selectNextPlayer();
         return !win;
     }
 
     public boolean wrongAnswer() {
-        System.out.println("Incorrect Answer");
-        System.out.println(currentPlayer.getName() + " was sent to the penalty box");
+        System.out.println("Question was incorrectly answered");
         currentPlayer.setInPenaltyBox(true);
+        System.out.println(currentPlayer.getName() + " was sent to the penalty box");
         selectNextPlayer();
         return true;
     }
@@ -152,5 +149,10 @@ public class Game implements IGame {
 
     public void selectNextPlayer() {
         currentPlayer = players.get((players.indexOf(currentPlayer) + 1) % players.size());
+    }
+
+    private void forwardPlayer(int roll) {
+        currentPlayer.setPosition(currentPlayer.getPosition() + roll);
+        if (currentPlayer.getPosition() > 12) currentPlayer.setPosition(currentPlayer.getPosition() - 12);
     }
 }

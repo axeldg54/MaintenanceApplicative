@@ -11,7 +11,7 @@ public class Player {
         this.name = name;
         this.purses = 0;
         this.inPenaltyBox = false;
-        this.position = 0;
+        this.position = 1;
     }
 
     public void addPurse() {
@@ -52,10 +52,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", purses=" + purses +
-                ", inPenaltyBox=" + inPenaltyBox +
-                '}';
+        return name;
     }
 }
