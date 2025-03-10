@@ -15,7 +15,7 @@ public class Player {
     }
 
     public void addPurse() {
-        purses++;
+        purses += 1;
     }
 
     public String getName() {
