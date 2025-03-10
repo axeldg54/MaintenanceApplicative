@@ -26,8 +26,8 @@ public class Game implements IGame {
     private final String POP = "Pop";
     private final String ROCK = "Rock";
     private final String SCIENCE = "Science";
-    private final String SPORT = "Sport";
-    String[] nomCategories = new String[] {POP, ROCK, SCIENCE, SPORT};
+    private final String SPORTS = "Sports";
+    String[] nomCategories = new String[] {POP, ROCK, SCIENCE, SPORTS};
     
     private ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Categorie> categories = new ArrayList<>();
@@ -37,7 +37,7 @@ public class Game implements IGame {
 
     public Game() {
         for (String category : nomCategories) {
-            this.categories.add(new Categorie(category, "./FichiersQuestion/" + category + ".txt"));
+            this.categories.add(new Categorie(category, "./src/main/java/trivia/FichiersQuestions/" + category + ".txt"));
         }
     }
 
@@ -93,7 +93,11 @@ public class Game implements IGame {
 
     private void askQuestion() {
         Categorie categorie = getCategorie(currentCategory());
-        System.out.println(categorie.removeFirstQuestion());
+	    if (categorie != null) {
+		    System.out.println(categorie.removeFirstQuestion());
+	    } else {
+            System.out.println("error, question : " + currentCategory() + " not found");
+        }
     }
     
     public Categorie getCategorie(String nomCategorie) {
