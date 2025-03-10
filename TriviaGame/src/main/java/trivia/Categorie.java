@@ -40,4 +40,8 @@ public class Categorie {
 		questions.add(question);
 	}
 	
+	public String removeFirstQuestion() {
+		return questions.removeFirst();
+	}
+	
 }

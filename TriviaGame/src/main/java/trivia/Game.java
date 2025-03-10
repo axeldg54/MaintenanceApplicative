@@ -27,6 +27,7 @@ public class Game implements IGame {
     private final String ROCK = "Rock";
     private final String SCIENCE = "Science";
     private final String SPORT = "Sport";
+    String[] nomCategories = new String[] {POP, ROCK, SCIENCE, SPORT};
     
     private ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Categorie> categories = new ArrayList<>();
@@ -35,7 +36,6 @@ public class Game implements IGame {
     Player currentPlayer;
 
     public Game() {
-        String[] nomCategories = new String[] {POP, ROCK, SCIENCE, SPORT};
         for (String category : nomCategories) {
             this.categories.add(new Categorie(category, "./FichiersQuestion/" + category + ".txt"));
         }
@@ -92,14 +92,16 @@ public class Game implements IGame {
     }
 
     private void askQuestion() {
-        if (currentCategory().equals("Pop"))
-            System.out.println(popQuestions.removeFirst());
-        if (currentCategory().equals("Science"))
-            System.out.println(scienceQuestions.removeFirst());
-        if (currentCategory().equals("Sports"))
-            System.out.println(sportsQuestions.removeFirst());
-        if (currentCategory().equals("Rock"))
-            System.out.println(rockQuestions.removeFirst());
+        Categorie categorie = getCategorie(currentCategory());
+        System.out.println(categorie.removeFirstQuestion());
+    }
+    
+    public Categorie getCategorie(String nomCategorie) {
+        for (Categorie categorieCourante : categories) {
+            if(categorieCourante.getNomCategorie().equals(nomCategorie))
+                return categorieCourante;
+        }
+        return null;
     }
 
 
