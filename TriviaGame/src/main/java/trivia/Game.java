@@ -6,14 +6,7 @@ public class Game implements IGame {
 
     private final CategoryEnum[] categoriesEnum = CategoryEnum.values();
     private ArrayList<Player> players = new ArrayList<>();
-    private ArrayList<Category> categories = new ArrayList<>();
     Player currentPlayer;
-
-    public Game() {
-        for (CategoryEnum category : categoriesEnum) {
-            this.categories.add(new Category(category.getName(), "./src/main/java/trivia/FichiersQuestions/" + category.getName() + ".txt"));
-        }
-    }
 
     public boolean isPlayable() {
         return (players.size() >= 2);
@@ -61,20 +54,7 @@ public class Game implements IGame {
     }
 
     private void askQuestion() {
-        Category category = getCategorie(currentCategory().getName());
-        if (category != null) {
-            System.out.println(category.removeFirstQuestion());
-        } else {
-            System.out.println("Error, question: " + currentCategory().getName() + " not found");
-        }
-    }
-
-    public Category getCategorie(String nomCategorie) {
-        for (Category categoryCourante : categories) {
-            if (categoryCourante.getName().equals(nomCategorie))
-                return categoryCourante;
-        }
-        return null;
+        System.out.println(currentCategory().removeFirstQuestion());
     }
 
     private CategoryEnum currentCategory() {
