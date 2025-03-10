@@ -44,7 +44,10 @@ public class Categorie {
 	}
 	
 	public String removeFirstQuestion() {
-		return questions.removeFirst();
+		if(!questions.isEmpty()){
+			return questions.removeFirst();
+		}
+		return null;
 	}
 
 	public List<Integer> getPositions() {
