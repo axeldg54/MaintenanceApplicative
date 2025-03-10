@@ -110,8 +110,9 @@ public class Game implements IGame {
                 + " Gold Coins.");
 
         boolean win = didPlayerWin();
+        System.out.println(win);
         selectNextPlayer();
-        return win;
+        return !win;
     }
 
     public boolean wrongAnswer() {
