@@ -56,7 +56,6 @@ public class Main {
             String choice = scanner.nextLine();
             actions.getOrDefault(choice, (v) -> System.out.println("Choix invalide.")).accept(null);
 
-            // Vous pouvez ajouter un mécanisme pour arrêter l'application si nécessaire
             System.out.print("Voulez-vous quitter ? (O/N) : ");
             String exitChoice = scanner.nextLine();
             if (exitChoice.equalsIgnoreCase("O")) {
