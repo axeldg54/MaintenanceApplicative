@@ -1,12 +1,15 @@
 package src;
 
-import src.events.Event;
-import src.events.MeetingEvent;
-import src.events.PeriodicEvent;
-import src.events.PersonalEvent;
+import src.event.Event;
+import src.event.MeetingEvent;
+import src.event.PeriodicEvent;
+import src.event.PersonalEvent;
+import src.event.attributes.*;
+import src.event.attributes.participant.Participant;
 
 import java.time.LocalDateTime;
 import java.time.temporal.WeekFields;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
@@ -181,8 +184,8 @@ public class Main {
                         System.out.print("Durée (en minutes) : ");
                         int duree = Integer.parseInt(scanner.nextLine());
 
-                        PersonalEvent personalEvent = new PersonalEvent(titre, utilisateur,
-                                LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute), duree);
+                        PersonalEvent personalEvent = new PersonalEvent(new TitleEvent(titre), new OwnerEvent(utilisateur),
+                                LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute), new DurationEvent(duree));
 
                         calendar.events.addEvent(personalEvent);
 
@@ -208,19 +211,19 @@ public class Main {
                         System.out.println("Lieu :");
                         String lieu = scanner.nextLine();
                         
-                        String participants = utilisateur;
+                        ParticipantsEvent participantsEvent = new ParticipantsEvent(new ArrayList<>());
                         
                         boolean encore = true;
                         System.out.println("Ajouter un participant ? (oui / non)");
                         while (scanner.nextLine().equals("oui"))
                         {
-                            System.out.print("Participants : " + participants);
-                            participants += ", " + scanner.nextLine();
+                            System.out.print("Participants : " + participantsEvent);
+                            participantsEvent.addParticipant(new Participant(scanner.nextLine()));
                         }
 
-                        MeetingEvent meetingEvent = new MeetingEvent(titre2, utilisateur,
-                                LocalDateTime.of(annee2, moisRdv2, jourRdv2, heure2, minute2), duree2,
-                                lieu, participants);
+                        MeetingEvent meetingEvent = new MeetingEvent(new TitleEvent(titre2), new OwnerEvent(utilisateur),
+                                LocalDateTime.of(annee2, moisRdv2, jourRdv2, heure2, minute2), new DurationEvent(duree2),
+                                new PlaceEvent(lieu), participantsEvent);
 
                         calendar.events.addEvent(meetingEvent);
 
@@ -244,9 +247,9 @@ public class Main {
                         System.out.print("Frequence (en jours) : ");
                         int frequence = Integer.parseInt(scanner.nextLine());
 
-                        PeriodicEvent periodicEvent = new PeriodicEvent(titre3, utilisateur,
-                                LocalDateTime.of(annee3, moisRdv3, jourRdv3, heure3, minute3), 0,
-                                frequence);
+                        PeriodicEvent periodicEvent = new PeriodicEvent(new TitleEvent(titre3), new OwnerEvent(utilisateur),
+                                LocalDateTime.of(annee3, moisRdv3, jourRdv3, heure3, minute3), new DurationEvent(0),
+                                new FrequencyEvent(frequence));
 
                         calendar.events.addEvent(periodicEvent);
 

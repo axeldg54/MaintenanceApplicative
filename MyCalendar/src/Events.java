@@ -1,8 +1,9 @@
-package src.events;
+package src;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import src.event.Event;
 
 import java.util.ArrayList;
 
@@ -20,8 +21,8 @@ public class Events {
         return events.get(index);
     }
 
-    public void removeEvent(int index) {
-        events.remove(index);
+    public void removeEvent(Event event) {
+        events.remove(event);
     }
 
     public int size() {

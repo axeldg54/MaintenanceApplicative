@@ -1,7 +1,7 @@
 package src;
 
-import src.events.Event;
-import src.events.Events;
+import src.event.Event;
+import src.event.PeriodicEvent;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -25,14 +25,14 @@ public class CalendarManager {
     }
 
     public boolean conflit(Event e1, Event e2) {
-        LocalDateTime fin1 = e1.dateDebut.plusMinutes(e1.dureeMinutes);
-        LocalDateTime fin2 = e2.dateDebut.plusMinutes(e2.dureeMinutes);
+        LocalDateTime fin1 = e1.startDate.plusMinutes(e1.minutesDuration.getMinutes());
+        LocalDateTime fin2 = e2.startDate.plusMinutes(e2.minutesDuration.getMinutes());
 
-        if (e1.type.equals("PERIODIQUE") || e2.type.equals("PERIODIQUE")) {
+        if (e1 instanceof PeriodicEvent || e2 instanceof PeriodicEvent) {
             return false; // Simplification abusive
         }
 
-        if (e1.dateDebut.isBefore(fin2) && fin1.isAfter(e2.dateDebut)) {
+        if (e1.startDate.isBefore(fin2) && fin1.isAfter(e2.startDate)) {
             return true;
         }
         return false;

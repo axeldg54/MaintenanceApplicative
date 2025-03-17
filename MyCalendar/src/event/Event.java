@@ -1,8 +1,11 @@
-package src.events;
+package src.event;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import src.event.attributes.DurationEvent;
+import src.event.attributes.OwnerEvent;
+import src.event.attributes.TitleEvent;
 
 import java.time.LocalDateTime;
 
@@ -10,10 +13,10 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 public abstract class Event {
-    public String title;
-    public String proprietaire;
-    public LocalDateTime dateDebut;
-    public int dureeMinutes;
+    public TitleEvent title;
+    public OwnerEvent owner;
+    public LocalDateTime startDate;
+    public DurationEvent minutesDuration;
 
     public abstract String description();
 
