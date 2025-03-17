@@ -19,6 +19,7 @@ public class ViewEventsAction implements MenuAction {
         actions.put("2", new ViewEventsByMonthAction(calendar, scanner));
         actions.put("3", new ViewEventsByWeekAction(calendar, scanner));
         actions.put("4", new ViewEventsByDayAction(calendar, scanner));
+        actions.put("5", new ViewEventsByPeriodAction(calendar, scanner));
     }
 
     @Override
@@ -28,7 +29,8 @@ public class ViewEventsAction implements MenuAction {
         System.out.println("2 - Afficher les événements d'un MOIS précis");
         System.out.println("3 - Afficher les événements d'une SEMAINE précise");
         System.out.println("4 - Afficher les événements d'un JOUR précis");
-        System.out.println("5 - Retour");
+        System.out.println("5 - Afficher les événements d'un PERIODE précise");
+        System.out.println("6 - Retour");
         System.out.print("Votre choix : ");
 
         actions.getOrDefault(scanner.nextLine(), new InvalidAction()).execute();

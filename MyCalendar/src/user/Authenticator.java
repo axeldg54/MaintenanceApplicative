@@ -14,7 +14,7 @@ public class Authenticator {
     public Authenticator(Scanner scanner) {
         this.scanner = scanner;
         this.users = new HashMap<>();
-        users.put("Root", "Chat");
+        users.put("Roger", "Chat");
         users.put("Pierre", "KiRouhl");
     }
 
