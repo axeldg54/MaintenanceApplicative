@@ -1,6 +1,8 @@
+package src.events;
+
 import java.time.LocalDateTime;
 
-public class Event {
+public abstract class Event {
     public String type; // "RDV_PERSONNEL", "REUNION", "PERIODIQUE"
     public String title;
     public String proprietaire;
@@ -24,9 +26,7 @@ public class Event {
 
     public String description() {
         String desc = "";
-        if (type.equals("RDV_PERSONNEL")) {
-            desc = "RDV : " + title + " à " + dateDebut.toString();
-        } else if (type.equals("REUNION")) {
+        if (type.equals("REUNION")) {
             desc = "Réunion : " + title + " à " + lieu + " avec " + participants;
         } else if (type.equals("PERIODIQUE")) {
             desc = "Événement périodique : " + title + " tous les " + frequenceJours + " jours";
