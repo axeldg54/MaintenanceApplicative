@@ -16,6 +16,11 @@ public class ViewEventsByPeriodAction implements MenuAction {
 
     @Override
     public void execute() {
+        System.out.print("Entrez la date de commencement (AAAA-MM-JJ HH:mm) : ");
+        LocalDateTime debut = LocalDateTime.parse(scanner.nextLine());
+        System.out.print("Entrez la date de fin (AAAA-MM-JJ HH:mm) : ");
+        LocalDateTime fin = LocalDateTime.parse(scanner.nextLine());
 
+        afficherListe(calendar.eventsBetweenPeriod(debut, fin));
     }
 }
