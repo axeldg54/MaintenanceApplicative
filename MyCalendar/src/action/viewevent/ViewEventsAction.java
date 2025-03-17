@@ -1,15 +1,10 @@
 package src.action.viewevent;
 
-import src.MainMenu;
-import src.action.AddEventAction;
 import src.action.InvalidAction;
-import src.action.LogoutAction;
 import src.action.MenuAction;
 import src.event.Event;
 import src.manager.CalendarManager;
 
-import java.time.LocalDateTime;
-import java.time.temporal.WeekFields;
 import java.util.*;
 
 public class ViewEventsAction implements MenuAction {
