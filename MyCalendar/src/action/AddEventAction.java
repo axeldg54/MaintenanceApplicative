@@ -18,6 +18,6 @@ public class AddEventAction implements MenuAction {
 
     @Override
     public void execute() {
-        calendar.addEvent(scanner, userSession);
+//        calendar.addEvent(scanner, userSession);
     }
 }
