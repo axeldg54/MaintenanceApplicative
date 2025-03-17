@@ -38,7 +38,8 @@ public class AddBirthdayEventAction implements MenuAction {
         BirthdayEvent birthdayEvent = new BirthdayEvent(
                 new TitleEvent(titre),
                 new OwnerEvent(userSession.getUsername()),
-                LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute));
+                LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute),
+                new EventId(0));
 
         calendar.events.addEvent(birthdayEvent);
 

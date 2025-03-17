@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import src.action.MenuAction;
 import src.event.PersonalEvent;
 import src.event.attributes.DurationEvent;
+import src.event.attributes.EventId;
 import src.event.attributes.OwnerEvent;
 import src.event.attributes.TitleEvent;
 import src.manager.CalendarManager;
@@ -39,7 +40,8 @@ public class AddPersonalEventAction implements MenuAction {
                 new TitleEvent(titre),
                 new OwnerEvent(userSession.getUsername()),
                 LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute),
-                new DurationEvent(duree));
+                new DurationEvent(duree),
+                new EventId(0));
 
         calendar.events.addEvent(personalEvent);
 

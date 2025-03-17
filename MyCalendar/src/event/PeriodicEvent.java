@@ -1,9 +1,6 @@
 package src.event;
 
-import src.event.attributes.DurationEvent;
-import src.event.attributes.FrequencyEvent;
-import src.event.attributes.OwnerEvent;
-import src.event.attributes.TitleEvent;
+import src.event.attributes.*;
 
 import java.time.LocalDateTime;
 
@@ -11,8 +8,8 @@ public class PeriodicEvent extends Event {
 
     public FrequencyEvent frequency;
 
-    public PeriodicEvent(TitleEvent title, OwnerEvent owner, LocalDateTime dateDebut, DurationEvent minutesDuration, FrequencyEvent frequency) {
-        super(title, owner, dateDebut, minutesDuration);
+    public PeriodicEvent(TitleEvent title, OwnerEvent owner, LocalDateTime dateDebut, DurationEvent minutesDuration, FrequencyEvent frequency, EventId id) {
+        super(id, title, owner, dateDebut, minutesDuration);
 
         this.frequency = frequency;
     }

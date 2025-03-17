@@ -2,6 +2,7 @@ package src.event;
 
 import lombok.Getter;
 import src.event.attributes.DurationEvent;
+import src.event.attributes.EventId;
 import src.event.attributes.OwnerEvent;
 import src.event.attributes.TitleEvent;
 
@@ -9,8 +10,8 @@ import java.time.LocalDateTime;
 
 @Getter
 public class BirthdayEvent extends Event {
-    public BirthdayEvent(TitleEvent title, OwnerEvent owner, LocalDateTime date) {
-        super(title, owner, date, new DurationEvent(0));
+    public BirthdayEvent(TitleEvent title, OwnerEvent owner, LocalDateTime date, EventId id) {
+        super(id, title, owner, date, new DurationEvent(0));
     }
 
     @Override

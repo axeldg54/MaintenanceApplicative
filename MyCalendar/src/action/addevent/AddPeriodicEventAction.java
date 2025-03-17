@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import src.action.MenuAction;
 import src.event.PeriodicEvent;
 import src.event.PersonalEvent;
-import src.event.attributes.DurationEvent;
-import src.event.attributes.FrequencyEvent;
-import src.event.attributes.OwnerEvent;
-import src.event.attributes.TitleEvent;
+import src.event.attributes.*;
 import src.manager.CalendarManager;
 import src.user.UserSession;
 
@@ -42,7 +39,8 @@ public class AddPeriodicEventAction implements MenuAction {
                 new OwnerEvent(userSession.getUsername()),
                 LocalDateTime.of(annee3, moisRdv3, jourRdv3, heure3, minute3),
                 new DurationEvent(0),
-                new FrequencyEvent(frequence));
+                new FrequencyEvent(frequence),
+        new EventId(0));
 
         calendar.events.addEvent(periodicEvent);
 

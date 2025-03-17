@@ -3,6 +3,7 @@ package test.java.src.event;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import src.event.BirthdayEvent;
+import src.event.attributes.EventId;
 import src.event.attributes.OwnerEvent;
 import src.event.attributes.TitleEvent;
 
@@ -19,7 +20,7 @@ class BirthdayEventTest {
         eventDate = LocalDateTime.of(2025, 3, 17, 15, 0);
         TitleEvent title = new TitleEvent("Anniversaire de Alice");
         OwnerEvent owner = new OwnerEvent("Alice");
-        birthdayEvent = new BirthdayEvent(title, owner, eventDate);
+        birthdayEvent = new BirthdayEvent(title, owner, eventDate, new EventId(0));
     }
 
     @Test

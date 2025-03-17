@@ -52,7 +52,8 @@ public class AddMeetingEventAction implements MenuAction {
                 LocalDateTime.of(annee2, moisRdv2, jourRdv2, heure2, minute2),
                 new DurationEvent(duree2),
                 new PlaceEvent(lieu),
-                participantsEvent);
+                participantsEvent,
+                new EventId(0));
 
         calendar.events.addEvent(meetingEvent);
 

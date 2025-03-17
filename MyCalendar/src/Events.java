@@ -34,4 +34,8 @@ public class Events {
             System.out.println(e.description());
         }
     }
+
+    public void deleteById(int id) {
+        events.removeIf(e -> e.id.getId() == id);
+    }
 }

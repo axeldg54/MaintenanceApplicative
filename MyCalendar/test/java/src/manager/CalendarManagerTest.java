@@ -31,7 +31,8 @@ class EventConflictCheckerTest {
                 new TitleEvent("Réunion"),
                 new OwnerEvent("Alice"),
                 LocalDateTime.of(2025, 3, 17, 10, 0),
-                new DurationEvent(60)
+                new DurationEvent(60),
+                new EventId(0)
         );
 
         event2 = new MeetingEvent(
@@ -40,7 +41,8 @@ class EventConflictCheckerTest {
                 LocalDateTime.of(2025, 3, 17, 10, 30),
                 new DurationEvent(60),
                 new PlaceEvent("Salle A"),
-                new ParticipantsEvent(new ArrayList<>())
+                new ParticipantsEvent(new ArrayList<>()),
+                new EventId(0)
         );
 
         periodicEvent1 = new PeriodicEvent(
@@ -48,7 +50,8 @@ class EventConflictCheckerTest {
                 new OwnerEvent("Charlie"),
                 LocalDateTime.of(2025, 3, 17, 9, 0),
                 new DurationEvent(30),
-                new FrequencyEvent(7)
+                new FrequencyEvent(7),
+                new EventId(0)
         );
 
         periodicEvent2 = new PeriodicEvent(
@@ -56,7 +59,8 @@ class EventConflictCheckerTest {
                 new OwnerEvent("David"),
                 LocalDateTime.of(2025, 3, 18, 9, 0),
                 new DurationEvent(45),
-                new FrequencyEvent(7)
+                new FrequencyEvent(7),
+                new EventId(0)
         );
     }
 
@@ -71,7 +75,8 @@ class EventConflictCheckerTest {
                 new TitleEvent("Pause"),
                 new OwnerEvent("Eve"),
                 LocalDateTime.of(2025, 3, 17, 12, 0),
-                new DurationEvent(30)
+                new DurationEvent(30),
+                new EventId(0)
         );
 
         assertFalse(calendar.conflit(event1, event3), "Les événements ne doivent pas être en conflit");

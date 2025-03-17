@@ -9,8 +9,8 @@ public class MeetingEvent extends Event {
     public PlaceEvent place;
     public ParticipantsEvent participants;
 
-    public MeetingEvent(TitleEvent title, OwnerEvent owner, LocalDateTime dateDebut, DurationEvent minutesDuration, PlaceEvent place, ParticipantsEvent participants) {
-        super(title, owner, dateDebut, minutesDuration);
+    public MeetingEvent(TitleEvent title, OwnerEvent owner, LocalDateTime dateDebut, DurationEvent minutesDuration, PlaceEvent place, ParticipantsEvent participants, EventId id) {
+        super(id, title, owner, dateDebut, minutesDuration);
 
         this.place = place;
         this.participants = participants;
