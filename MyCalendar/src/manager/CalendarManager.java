@@ -1,5 +1,6 @@
-package src;
+package src.manager;
 
+import src.Events;
 import src.event.Event;
 import src.event.PeriodicEvent;
 
