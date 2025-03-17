@@ -37,10 +37,4 @@ public class CalendarManager {
         }
         return false;
     }
-
-    public void afficherEvenements() {
-        for (Event e : events.getEvents()) {
-            System.out.println(e.description());
-        }
-    }
 }

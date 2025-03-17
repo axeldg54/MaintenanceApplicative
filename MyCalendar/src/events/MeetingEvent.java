@@ -3,8 +3,15 @@ package src.events;
 import java.time.LocalDateTime;
 
 public class MeetingEvent extends Event {
-    public MeetingEvent(String type, String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes, String lieu, String participants, int frequenceJours) {
-        super(type, title, proprietaire, dateDebut, dureeMinutes, lieu, participants, frequenceJours);
+
+    public String lieu;
+    public String participants;
+
+    public MeetingEvent(String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes, String lieu, String participants) {
+        super(title, proprietaire, dateDebut, dureeMinutes);
+
+        this.lieu = lieu;
+        this.participants = participants;
     }
 
     public String description() {

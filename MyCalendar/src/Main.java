@@ -117,7 +117,7 @@ public class Main {
 
                         switch (choix) {
                             case "1":
-                                calendar.afficherEvenements();
+                                calendar.events.printEvents();
                                 break;
 
                             case "2":
@@ -181,9 +181,8 @@ public class Main {
                         System.out.print("Durée (en minutes) : ");
                         int duree = Integer.parseInt(scanner.nextLine());
 
-                        PersonalEvent personalEvent = new PersonalEvent("RDV_PERSONNEL", titre, utilisateur,
-                                LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute), duree,
-                                "", "", 0);
+                        PersonalEvent personalEvent = new PersonalEvent(titre, utilisateur,
+                                LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute), duree);
 
                         calendar.events.addEvent(personalEvent);
 
@@ -219,9 +218,9 @@ public class Main {
                             participants += ", " + scanner.nextLine();
                         }
 
-                        MeetingEvent meetingEvent = new MeetingEvent("REUNION", titre2, utilisateur,
+                        MeetingEvent meetingEvent = new MeetingEvent(titre2, utilisateur,
                                 LocalDateTime.of(annee2, moisRdv2, jourRdv2, heure2, minute2), duree2,
-                                lieu, participants, 0);
+                                lieu, participants);
 
                         calendar.events.addEvent(meetingEvent);
 
@@ -245,9 +244,9 @@ public class Main {
                         System.out.print("Frequence (en jours) : ");
                         int frequence = Integer.parseInt(scanner.nextLine());
 
-                        PeriodicEvent periodicEvent = new PeriodicEvent("PERIODIQUE", titre3, utilisateur,
+                        PeriodicEvent periodicEvent = new PeriodicEvent(titre3, utilisateur,
                                 LocalDateTime.of(annee3, moisRdv3, jourRdv3, heure3, minute3), 0,
-                                "", "", frequence);
+                                frequence);
 
                         calendar.events.addEvent(periodicEvent);
 

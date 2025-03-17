@@ -3,8 +3,13 @@ package src.events;
 import java.time.LocalDateTime;
 
 public class PeriodicEvent extends Event {
-    public PeriodicEvent(String type, String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes, String lieu, String participants, int frequenceJours) {
-        super(type, title, proprietaire, dateDebut, dureeMinutes, lieu, participants, frequenceJours);
+
+    public int frequenceJours;
+
+    public PeriodicEvent(String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes, int frequenceJours) {
+        super(title, proprietaire, dateDebut, dureeMinutes);
+
+        this.frequenceJours = frequenceJours;
     }
 
     @Override

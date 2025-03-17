@@ -27,4 +27,10 @@ public class Events {
     public int size() {
         return events.size();
     }
+
+    public void printEvents() {
+        for (Event e : events) {
+            System.out.println(e.description());
+        }
+    }
 }
