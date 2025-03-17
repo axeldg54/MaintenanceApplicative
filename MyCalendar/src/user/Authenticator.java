@@ -1,17 +1,21 @@
 package src.user;
 
+import lombok.Getter;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
 public class Authenticator {
     private final Scanner scanner;
-    private final List<UserValidator> validators;
-    private HashMap<String, String> users = new HashMap<>();
+    @Getter
+    private final HashMap<String, String> users;
 
     public Authenticator(Scanner scanner) {
         this.scanner = scanner;
-        this.validators = List.of(new StaticUserValidator());
+        this.users = new HashMap<>();
+        users.put("Root", "Chat");
+        users.put("Pierre", "KiRouhl");
     }
 
     public UserSession authenticate() {
@@ -20,28 +24,24 @@ public class Authenticator {
         System.out.print("Mot de passe: ");
         String password = scanner.nextLine();
 
-        return validators.stream()
-                .filter(validator -> validator.isValid(username, password))
-                .findFirst()
-                .map(validator -> new UserSession(username))
-                .orElseGet(() -> {
-                    System.out.println("Échec de l'authentification.");
-                    return authenticate();
-                });
+        if (users.containsKey(username) && users.get(username).equals(password)) {
+            return new UserSession(username);
+        }
+        return null;
     }
 
     public UserSession createUser() {
-        String utilisateur;
         System.out.print("Nom d'utilisateur: ");
-        utilisateur = scanner.nextLine();
+        String utilisateur = scanner.nextLine();
         System.out.print("Mot de passe: ");
         String motDePasse = scanner.nextLine();
         System.out.print("Répéter mot de passe: ");
+
         if (scanner.nextLine().equals(motDePasse)) {
             users.put(utilisateur, motDePasse);
             return new UserSession(utilisateur);
         } else {
-            System.out.println("Les mots de passes ne correspondent pas...");
+            System.out.println("Les mots de passe ne correspondent pas...");
             return createUser();
         }
     }
