@@ -24,13 +24,5 @@ public abstract class Event {
         this.frequenceJours = frequenceJours;
     }
 
-    public String description() {
-        String desc = "";
-        if (type.equals("REUNION")) {
-            desc = "Réunion : " + title + " à " + lieu + " avec " + participants;
-        } else if (type.equals("PERIODIQUE")) {
-            desc = "Événement périodique : " + title + " tous les " + frequenceJours + " jours";
-        }
-        return desc;
-    }
+    abstract String description();
 }
