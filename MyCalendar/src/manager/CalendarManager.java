@@ -26,16 +26,15 @@ public class CalendarManager {
     }
 
     public boolean conflit(Event e1, Event e2) {
-        LocalDateTime fin1 = e1.startDate.plusMinutes(e1.minutesDuration.getMinutes());
-        LocalDateTime fin2 = e2.startDate.plusMinutes(e2.minutesDuration.getMinutes());
-
-        if (e1 instanceof PeriodicEvent || e2 instanceof PeriodicEvent) {
-            return false; // Simplification abusive
+        LocalDateTime fin1;
+        LocalDateTime fin2;
+        if (e1 instanceof PeriodicEvent && e2 instanceof PeriodicEvent) {
+            fin1 = e1.startDate.plusDays(((PeriodicEvent) e1).frequency.getDays());
+            fin2 = e2.startDate.plusDays(((PeriodicEvent) e2).frequency.getDays());
+        } else {
+            fin1 = e1.startDate.plusMinutes(e1.minutesDuration.getMinutes());
+            fin2 = e2.startDate.plusMinutes(e2.minutesDuration.getMinutes());
         }
-
-        if (e1.startDate.isBefore(fin2) && fin1.isAfter(e2.startDate)) {
-            return true;
-        }
-        return false;
+        return e1.startDate.isBefore(fin2) && fin1.isAfter(e2.startDate);
     }
 }
