@@ -14,19 +14,10 @@ public class CalendarManager {
         this.events = new Events(new ArrayList<>());
     }
 
-    public List<Event> eventsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
+    public List<Event> eventsBetweenPeriod(LocalDateTime debut, LocalDateTime fin) {
         List<Event> result = new ArrayList<>();
         for (Event e : events.getEvents()) {
-            if (e.type.equals("PERIODIQUE")) {
-                LocalDateTime temp = e.dateDebut;
-                while (temp.isBefore(fin)) {
-                    if (!temp.isBefore(debut)) {
-                        result.add(e);
-                        break;
-                    }
-                    temp = temp.plusDays(e.frequenceJours);
-                }
-            } else if (!e.dateDebut.isBefore(debut) && !e.dateDebut.isAfter(fin)) {
+            if (e.isBetween(debut, fin)) {
                 result.add(e);
             }
         }

@@ -10,4 +10,9 @@ public class MeetingEvent extends Event {
     public String description() {
         return "Réunion : " + title + " à " + lieu + " avec " + participants;
     }
+
+    @Override
+    public boolean isBetween(LocalDateTime debut, LocalDateTime fin) {
+        return (!this.dateDebut.isBefore(debut) && !this.dateDebut.isAfter(fin));
+    }
 }

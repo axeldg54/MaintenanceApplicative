@@ -20,4 +20,6 @@ public abstract class Event {
     public int frequenceJours; // uniquement pour PERIODIQUE
 
     public abstract String description();
+
+    public abstract boolean isBetween(LocalDateTime debut, LocalDateTime fin);
 }

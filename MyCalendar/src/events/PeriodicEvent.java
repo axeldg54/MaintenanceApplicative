@@ -7,7 +7,16 @@ public class PeriodicEvent extends Event {
         super(type, title, proprietaire, dateDebut, dureeMinutes, lieu, participants, frequenceJours);
     }
 
+    @Override
     public String description() {
         return "Événement périodique : " + title + " tous les " + frequenceJours + " jours";
     }
+
+    @Override
+    public boolean isBetween(LocalDateTime debut, LocalDateTime fin) {
+        LocalDateTime temp = this.dateDebut;
+        return (!temp.isBefore(debut) && !temp.isAfter(fin)
+                && !temp.plusDays(this.frequenceJours).isAfter(fin));
+    }
+
 }
