@@ -185,7 +185,7 @@ public class Main {
                                 LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute), duree,
                                 "", "", 0);
 
-                        calendar.addEvent(personalEvent);
+                        calendar.events.addEvent(personalEvent);
 
                         System.out.println("Événement ajouté.");
                         break;
@@ -223,7 +223,7 @@ public class Main {
                                 LocalDateTime.of(annee2, moisRdv2, jourRdv2, heure2, minute2), duree2,
                                 lieu, participants, 0);
 
-                        calendar.addEvent(meetingEvent);
+                        calendar.events.addEvent(meetingEvent);
 
                         System.out.println("Événement ajouté.");
                         break;
@@ -249,7 +249,7 @@ public class Main {
                                 LocalDateTime.of(annee3, moisRdv3, jourRdv3, heure3, minute3), 0,
                                 "", "", frequence);
 
-                        calendar.addEvent(periodicEvent);
+                        calendar.events.addEvent(periodicEvent);
 
                         System.out.println("Événement ajouté.");
                         break;
