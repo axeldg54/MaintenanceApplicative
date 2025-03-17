@@ -15,11 +15,11 @@ public class BirthdayEvent extends Event {
 
     @Override
     public String description() {
-        return "";
+        return "Anniversaire : " + title + " à " + startDate.toString();
     }
 
     @Override
     public boolean isBetween(LocalDateTime debut, LocalDateTime fin) {
-        return false;
+        return (!this.startDate.isBefore(debut) && !this.startDate.isAfter(fin));
     }
 }
