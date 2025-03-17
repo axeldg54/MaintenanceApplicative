@@ -24,5 +24,5 @@ public abstract class Event {
         this.frequenceJours = frequenceJours;
     }
 
-    abstract String description();
+    public abstract String description();
 }
